@@ -12,8 +12,8 @@
         <h1>🇯🇵 Hafal Hiragana</h1>
         
         <div class="mode-selector">
-            <button class="mode-btn active" onclick="setMode('flip')">🎴 Flip Card</button>
-            <button class="mode-btn" onclick="setMode('quiz')">⌨️ Quiz Mode</button>
+            <button class="mode-btn active" onclick="setMode('flip')">🎴 Flip</button>
+            <button class="mode-btn" onclick="setMode('quiz')">⌨️ Quiz</button>
         </div>
 
         <div class="card-area">
@@ -23,23 +23,26 @@
                     <div class="card-face back" id="romaji-display">?</div>
                 </div>
             </div>
-            
             <div class="instruction-text" id="instruction">Klik kartu untuk balik</div>
         </div>
 
-        <div class="quiz-controls hidden" id="quizArea">
-            <input type="text" id="quizInput" placeholder="Ketik Romaji (contoh: ka)" autocomplete="off">
-            <div id="feedbackMsg" class="feedback"></div>
+        <div class="bottom-section">
+            
+            <div class="quiz-controls hidden" id="quizArea">
+                <input type="text" id="quizInput" placeholder="Ketik Romaji..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <div id="feedbackMsg" class="feedback"></div>
+            </div>
+
+            <div class="controls">
+                <div class="counter" id="counter-display">Loading...</div>
+                <button class="btn-next" id="btnNext">Ganti Huruf (Spasi)</button>
+            </div>
+
+            <footer class="app-footer">
+                &copy; ahsanfirdaus1 <span id="year"></span>
+            </footer>
         </div>
 
-        <div class="controls">
-            <div class="counter" id="counter-display">Loading...</div>
-            <button class="btn-next" id="btnNext">Ganti Huruf (Spasi)</button>
-        </div>
-
-        <footer class="app-footer">
-            &copy; ahsanfirdaus1 <span id="year"></span>
-        </footer>
     </div>
 
     <script src="asset\js\script.js"></script>
