@@ -9,9 +9,13 @@
 <body>
 
     <div class="container">
-        <h1>🇯🇵 Hafal Hiragana </h1>
-        <h2>by Ahsan With AI</h2>
+        <h1>🇯🇵 Hafal Hiragana</h1>
         
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('flip')">🎴 Flip Card</button>
+            <button class="mode-btn" onclick="setMode('quiz')">⌨️ Quiz Mode</button>
+        </div>
+
         <div class="card-area">
             <div class="card-container" id="cardContainer">
                 <div class="card" id="flashcard">
@@ -20,13 +24,22 @@
                 </div>
             </div>
             
-            <div class="instruction-text">Klik kartu untuk balik</div>
+            <div class="instruction-text" id="instruction">Klik kartu untuk balik</div>
+        </div>
+
+        <div class="quiz-controls hidden" id="quizArea">
+            <input type="text" id="quizInput" placeholder="Ketik Romaji (contoh: ka)" autocomplete="off">
+            <div id="feedbackMsg" class="feedback"></div>
         </div>
 
         <div class="controls">
             <div class="counter" id="counter-display">Loading...</div>
             <button class="btn-next" id="btnNext">Ganti Huruf (Spasi)</button>
         </div>
+
+        <footer class="app-footer">
+            &copy; ahsanfirdaus1 <span id="year"></span>
+        </footer>
     </div>
 
     <script src="asset\js\script.js"></script>

@@ -4,6 +4,8 @@
     --card-back: #ff4757;
     --text-main: #2f3542;
     --accent: #3742fa;
+    --success: #2ed573;
+    --error: #ff4757;
 }
 
 * { box-sizing: border-box; }
@@ -17,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Mencegah scroll */
+    overflow: hidden;
 }
 
 .container {
@@ -25,15 +27,45 @@ body {
     width: 100%;
     max-width: 400px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
 }
 
-h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #dfe4ea; }
+h1 { font-size: 1.5rem; margin: 0 0 1rem 0; color: #dfe4ea; flex-shrink: 0; }
+
+/* Mode Selector */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    background: #2f3542;
+    border: 1px solid #57606f;
+    color: #a4b0be;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    font-weight: bold;
+}
 
 /* Area Kartu */
 .card-container {
     perspective: 1000px;
     width: 100%;
-    height: 350px; /* Tinggi tetap agar layout stabil */
+    height: 250px; /* Sedikit dikecilkan biar muat keyboard HP */
     cursor: pointer;
     margin-bottom: 10px;
 }
@@ -43,7 +75,7 @@ h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #dfe4ea; }
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal sedikit */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
@@ -64,15 +96,13 @@ h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #dfe4ea; }
     -webkit-font-smoothing: antialiased;
 }
 
-/* Tampilan Depan (Hiragana) */
 .front {
     background-color: var(--card-bg);
     color: var(--text-main);
-    font-size: 8rem;
+    font-size: 7rem; /* Adjusted size */
     font-weight: bold;
 }
 
-/* Tampilan Belakang (Romaji) */
 .back {
     background-color: var(--card-back);
     color: white;
@@ -85,23 +115,61 @@ h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #dfe4ea; }
 .instruction-text {
     font-size: 0.8rem;
     color: #747d8c;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    min-height: 1.2em;
 }
 
-/* Kontrol Bawah */
+/* Quiz Controls */
+.quiz-controls {
+    margin-bottom: 15px;
+}
+
+.quiz-controls.hidden {
+    display: none;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #57606f;
+    background: #2f3542;
+    color: white;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent);
+    background: #1e272e;
+}
+
+.feedback {
+    height: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.text-success { color: var(--success); }
+.text-error { color: var(--error); }
+
+/* Tombol Next */
 .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    margin-top: auto;
+    padding-bottom: 20px;
 }
 
 .counter {
     font-size: 0.9rem;
     color: #a4b0be;
     font-family: monospace;
+    margin-bottom: 10px;
 }
 
 .btn-next {
+    width: 100%;
     padding: 15px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -110,11 +178,18 @@ h1 { font-size: 1.5rem; margin-bottom: 1rem; color: #dfe4ea; }
     background-color: var(--accent);
     color: white;
     cursor: pointer;
-    transition: transform 0.1s, background 0.2s;
     box-shadow: 0 4px 0 #2f3542;
 }
 
 .btn-next:active {
     transform: translateY(4px);
     box-shadow: none;
+}
+
+/* Footer Styles */
+.app-footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #57606f; /* Warna abu-abu redup biar gak mencolok */
+    font-family: monospace;
 }
